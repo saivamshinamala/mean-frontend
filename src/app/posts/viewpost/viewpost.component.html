@@ -1,0 +1,23 @@
+<mat-spinner style="margin: auto;" *ngIf="!isLoading"></mat-spinner>
+<mat-accordion *ngFor="let post of viewAllPosts">
+  <mat-expansion-panel class="items_color" style="margin-bottom : .5rem;">
+    <mat-expansion-panel-header>
+      <mat-panel-title style="color: rgba(255, 255, 255, .7);">
+        {{ post.title }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p style="padding: .4rem 2em 0 2rem;">{{ post.content }}</p>
+    <hr>
+    <div class="example-button-row" style="text-align: right;">
+      <button mat-button (click)="onEdit(post)">Edit <mat-icon aria-hidden="false" style="font-size: 16px;"
+          aria-label="Example home icon">border_color</mat-icon>
+      </button>
+      <button mat-button color="warn" (click)="onDelete(post._id)">Delete <mat-icon aria-hidden="false"
+          style="font-size: 16px;" aria-label="Example home icon">delete</mat-icon></button>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-paginator *ngIf ="totalPosts > postsPerPage" class="items_color" [length]="totalPosts"
+              [pageSize]="postsPerPage"
+              [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)"></mat-paginator>
+<p class="NoPosts" *ngIf="totalPosts <= 0">No Posts available</p>

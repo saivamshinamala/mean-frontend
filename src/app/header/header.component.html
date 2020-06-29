@@ -1,0 +1,16 @@
+<mat-toolbar class="back_front_color">
+    <div class="row">
+      <mat-toolbar-row>
+        <span><a routerLink="/" class="home"> My Notes</a></span>
+      </mat-toolbar-row> 
+    </div> 
+    <div class="menu">
+      <ul *ngIf="!isUserLoggedIn">
+        <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+        <li><a routerLink="/signup" routerLinkActive="active">Signup</a></li>
+      </ul>
+      <ul *ngIf="isUserLoggedIn">
+        <li><a (click)="onLogout()" style="cursor: pointer;">Logout</a></li>
+      </ul>
+    </div>
+</mat-toolbar>

@@ -1,0 +1,26 @@
+<form class="example-form" (ngSubmit)="onLogin(formData)" #formData="ngForm">
+  <mat-card style="background-color: rgba(255, 255, 255, 0.7);">
+    <div *ngIf="!isLoggedin">
+      <div style="width: 100%;">
+        <mat-label class="heading">Login</mat-label>
+      </div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input matInput email placeholder="Ex. Email" required min-length="3" ngModel name="email" #email>
+        <mat-error *ngIf="!email.valid">Enter a valid Email</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Ex. Password" type="password" required min-leng3 ngModel name="password"
+          #password>
+        <mat-error *ngIf="!password.valid">Enter a valid Password</mat-error>
+      </mat-form-field>
+      <div class="example-button-row">
+        <button mat-raised-button color="primary" [disabled]="!formData.valid" type="submit">Login</button>
+      </div>
+    </div>
+    <div class="text">
+      <p *ngIf = "isLoggedin"> User is already logged in <br><br> Logout to continue</p>
+    </div>
+  </mat-card>
+</form>

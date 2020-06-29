@@ -1,0 +1,31 @@
+<form class="example-form" (ngSubmit)="onSignup(formData)" #formData="ngForm">
+  <mat-card style="background-color: rgba(255, 255, 255, 0.7);">
+    <div *ngIf = "!isLoggedin">
+      <div style="width: 100%;">
+        <mat-label class="heading">Sign Up</mat-label>
+      </div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="Ex. Username" required ngModel name="username" #username>
+        <mat-error *ngIf="!username.valid">Username cannot be empty</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Ex. Email" required min-length="3" email ngModel name="email" #email>
+        <mat-error *ngIf="email.invalid">Enter a valid Email</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Ex. Password" type="password" required min-length="3" ngModel name="password"
+          #password>
+        <mat-error *ngIf="!password.valid">Enter a valid Password</mat-error>
+      </mat-form-field>
+      <div class="example-button-row">
+        <button mat-raised-button color="primary" type="submit" [disabled] = "!formData.valid">Sign up</button>
+      </div>
+    </div>
+    <div class="text">
+      <p *ngIf="isLoggedin"> User is already logged in <br><br> Logout to continue</p>
+    </div>
+  </mat-card>
+</form>
